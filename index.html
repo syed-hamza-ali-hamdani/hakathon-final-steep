@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dynamic Resume Builder</h1>
+        </header>
+        
+        <main>
+            <form id="resumeForm">
+                <!-- Personal Information Section -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="123-456-7890">
+                    
+                    <label for="image">Profile Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </fieldset>
+                
+                <!-- URL Generation Section -->
+                <fieldset>
+                    <label for="username">Enter your username:</label>
+                    <input type="text" id="username" placeholder="Enter username">
+                    <button type="button" id="generateUrlButton">Generate URL</button>
+                    <p id="generatedUrl">Generated URL will appear here.</p>
+                </fieldset>
+                
+                <!-- Education Section -->
+                <fieldset id="educationFieldset">
+                    <legend>Education</legend>
+                    <div id="educationList">
+                        <div class="educationEntry">
+                            <label for="education">Education Details:</label>
+                            <input type="text" name="education[]" class="educationInput">
+                        </div>
+                    </div>
+                    <button type="button" onclick="addEducation()">Add More Education</button>
+                </fieldset>
+                
+                <!-- Work Experience Section -->
+                <fieldset id="workFieldset">
+                    <legend>Work Experience</legend>
+                    <div id="workList">
+                        <div class="workEntry">
+                            <label for="work">Work Experience:</label>
+                            <input type="text" name="work[]" class="workInput">
+                        </div>
+                    </div>
+                    <button type="button" onclick="addWork()">Add More Work Experience</button>
+                </fieldset>
+                
+                <!-- Skills Section -->
+                <fieldset>
+                    <legend>Skills</legend>
+                    <div id="skillsList">
+                        <div class="skillEntry">
+                            <label for="skills">Skills (comma separated):</label>
+                            <input type="text" name="skills[]" class="skillsInput">
+                        </div>
+                    </div>
+                    <button type="button" onclick="addSkill()">Add More Skills</button>
+                </fieldset>
+                
+                <!-- Generate Resume Button -->
+                <button type="button" onclick="generateResume()">Generate Resume</button>
+            </form>
+            
+            <!-- Resume Output Section -->
+            <section id="resumeOutput" class="resume-output"></section>
+            
+            <!-- Actions Section -->
+            <section id="actions">
+                <div id="generatedLink">
+                    <ul>
+                        <li id="shareableLink"></li>
+                        <li><button id="downloadPDF">Download PDF</button></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
